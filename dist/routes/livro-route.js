@@ -6,6 +6,7 @@ const livro_1 = require("../controller/livro");
 const auth_1 = require("../middleware/auth");
 const router = (0, express_1.Router)();
 exports.livroRouter = router;
+
 /**
  * @swagger
  * components:
@@ -94,29 +95,4 @@ router.get("/livro", auth_1.validateAuth, livro_1.findAll);
  *                  description: Internal server error
  */
 router.get("/livro/:id", livro_1.findLivro);
-/**
- * @swagger
- * /livro:
- *     post:
- *         summary: Adiciona livro na lista
- *         tags: [Livros]
- *         requestBody:
- *             required: true
- *             content:
- *                 application/json:
- *                     schema:
- *                         type: object
- *                         properties:
- *                             titulo:
- *                                 type: string
- *                                 description: nome do livro
- *                             autor:
- *                                 type: array
- *                                 items:
- *                                     type: string
- *                                 description: nome do autor do livro
- *         responses:
- *             201:
- *                 description: Livro Criado com sucesso
- */
 router.post("/livro", livro_1.addLivro);

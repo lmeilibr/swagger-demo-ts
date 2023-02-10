@@ -1,44 +1,13 @@
 import express from "express";
 import bodyParser from "body-parser";
-import swaggerJSDoc from "swagger-jsdoc";
 import swaggerUi from "swagger-ui-express";
 import {livroRouter} from "./routes/livro-route";
 
+import swaggerDocumentation from "./swagger.json"
 
 const app = express();
 
-const options = {
-    definition: {
-        openapi: "3.0.1",
-        info: {
-            title: "API REST de Livros",
-            version: "1.0.0",
-            description: "Documentação Swagger para API REST de Livros",
-            contact: {
-                name: "Leandro Meili",
-                email: "leandro@example.com"
-            }
-        },
-        schemes: ["http"],
-        servers: [
-            {
-                url: "http://localhost:3000/v1",
-                description: "Dev Server"
-            },
-            {
-                url: "http://api.host.prod.com:3007/v1",
-                description: "Prod Server"
-            }
-        ],
-    },
-    apis: [
-        "./dist/routes/*.js",
-    ],
-};
-
-const swaggerSpec = swaggerJSDoc(options);
-
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocumentation));
 
 app.use(bodyParser.json());
 
