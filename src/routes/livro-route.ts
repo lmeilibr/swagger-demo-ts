@@ -6,6 +6,38 @@ const router = Router();
 
 /**
  * @swagger
+ * components:
+ *     schemas:
+ *         Livro:
+ *             type: object
+ *             required:
+ *                 - titulo
+ *                 - autor
+ *             properties:
+ *                 id:
+ *                     type: string
+ *                     description: id auto-gerado do livro
+ *                 titulo:
+ *                     type: string
+ *                     description: nome do livro
+ *                 autor:
+ *                     type: array
+ *                     items:
+ *                         type: string
+ *                     description: nome do autor do livro
+ *             example:
+ *                 id: 1f40d986-380a-41ae-845f-0b63c0c5bb56
+ *                 titulo: Programador Pragmático
+ *                 autor: ['Andy Hunt','Dave Thomas']
+ *     securitySchemes:
+ *         bearerAuth:
+ *             type: http
+ *             scheme: bearer
+ *             bearerFormat: JWT
+ */
+
+/**
+ * @swagger
  * tags:
  *   - name: Livros
  *     description: API de gerenciamente de Livros
