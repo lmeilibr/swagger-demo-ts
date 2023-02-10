@@ -64,6 +64,31 @@ router.get("/livro", validateAuth, findAll)
  */
 router.get("/livro/:id", findLivro)
 
+/**
+ * @swagger
+ * /livro:
+ *     post:
+ *         summary: Adiciona livro na lista
+ *         tags: [Livros]
+ *         requestBody:
+ *             required: true
+ *             content:
+ *                 application/json:
+ *                     schema:
+ *                         type: object
+ *                         properties:
+ *                             titulo:
+ *                                 type: string
+ *                                 description: nome do livro
+ *                             autor:
+ *                                 type: array
+ *                                 items:
+ *                                     type: string
+ *                                 description: nome do autor do livro
+ *         responses:
+ *             201:
+ *                 description: Livro Criado com sucesso
+ */
 router.post("/livro", addLivro)
 
 export {router as livroRouter}
