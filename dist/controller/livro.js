@@ -16,10 +16,14 @@ const findAll = (req, res) => {
 };
 exports.findAll = findAll;
 const findLivro = (req, res) => {
-    console.log(req.params.id);
+    // console.log(req.params.id)
+    // console.log(livros)
     const livro = livros.filter(livro => {
+        console.log(req.params.id);
+        console.log(livro.id);
         return livro.id === req.params.id;
     });
+    console.log(livro);
     res.status(200).json(livro);
 };
 exports.findLivro = findLivro;

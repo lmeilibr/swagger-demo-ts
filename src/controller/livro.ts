@@ -29,8 +29,9 @@ export const findLivro = (
     req: Request,
     res: Response,
 ) => {
-    console.log(req.params.id)
     const livro = livros.filter(livro => {
+        console.log(req.params.id)
+        console.log(livro.id)
         return livro.id === req.params.id
     })
     res.status(200).json(livro);
