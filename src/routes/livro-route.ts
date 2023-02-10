@@ -50,8 +50,16 @@ const router = Router();
  *          summary: Retorna todos os livros da lista
  *          tags: [Livros]
  *          security: [{"bearerAuth": []}]
- *          description: Send a message to the server and get a response added to the original text.
+ *          description: Retorna um json com a lista de todos os livros.
  *          responses:
+ *              200:
+ *                  description: Success
+ *                  content:
+ *                      application/json:
+ *                          schema:
+ *                              type: array
+ *                              items:
+ *                                  $ref: "#/components/schemas/Livro"
  *              401:
  *                  description: Unauthorized
  *              404:
@@ -73,10 +81,14 @@ router.get("/livro", validateAuth, findAll)
  *                schema:
  *                    type: string
  *                required: true
- *                description: Send a message to the server and get a response added to the original text.
+ *                description: Retorna um livro em formato json do ID especificado na requisição.
  *          responses:
  *              200:
  *                  description: Descrição do Livro com id
+ *                  content:
+ *                      application/json:
+ *                          schema:
+ *                              $ref: "#/components/schemas/Livro"
  *              404:
  *                  description: Not found
  *              500:
